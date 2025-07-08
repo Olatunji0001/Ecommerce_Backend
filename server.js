@@ -19,8 +19,7 @@ const app = express();
 // ✅ Middleware setup
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",                 // for local testing
+    origin: [             // for local testing
       "https://nexus-buy.vercel.app",         // ✅ correct - no trailing slash!
     ],
     credentials: true,
