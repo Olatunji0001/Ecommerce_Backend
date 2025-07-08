@@ -19,7 +19,7 @@ const app = express();
 // ✅ Middleware setup
 app.use(
   cors({
-    origin: "http://localhost:3000", // allow frontend to connect
+    origin: " https://ecommerce-backend-ueml.onrender.com", // allow frontend to connect
   })
 );
 app.use(express.json()); // allow backend to read JSON from frontend
