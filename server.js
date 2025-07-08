@@ -37,20 +37,7 @@ app.listen(process.env.PORT, () => {
   console.log("App is listening on port", process.env.PORT);
 });
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+app.get("/", (req, res) => {
+  res.send("Backend is running");
 });
 
-(async () => {
-  const result = await cloudinary.uploader.upload("./images/sample.jpg");
-  //console.log("Image uploaded successfully:", result);
-  const url = cloudinary.url(result.public_id, {
-    transformation: [
-      { width: 500, height: 1000, crop: "fill" },
-      { quality: "auto", fetch_format: "auto", crop: "fill", gravity: "auto" },
-    ],
-  });
-  //console.log("Transformed image URL:", url);
-})();
