@@ -19,9 +19,8 @@ const app = express();
 // ✅ Middleware setup
 app.use(
   cors({
-    origin: [             // for local testing
-      "https://nexus-buy.vercel.app",         // ✅ correct - no trailing slash!
-    ],
+    // for local testing
+    origin: "https://nexus-buy.vercel.app", // ✅ correct - no trailing slash!
     credentials: true,
   })
 );
@@ -39,4 +38,3 @@ app.listen(process.env.PORT, () => {
 app.get("/", (req, res) => {
   res.send("Backend is running");
 });
-
