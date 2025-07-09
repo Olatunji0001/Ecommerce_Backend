@@ -16,11 +16,19 @@ databaseConnect();
 // Create express app
 const app = express();
 
-// ✅ Middleware setup
 app.use(
   cors({
-    // for local testing
-    origin: "https://nexus-buy.vercel.app", // ✅ correct - no trailing slash!
+    origin: function (origin, callback) {
+      const allowedOrigins = [
+        "http://localhost:3000",
+        "https://nexus-buy.vercel.app",
+      ];
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
