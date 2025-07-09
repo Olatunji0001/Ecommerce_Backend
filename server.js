@@ -18,7 +18,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:3000",         // for local dev
-  "https://nexus-buy-8kbv.vercel.app/",  // for Vercel frontend
+  "https://nexus-buy-8kbv.vercel.app",  // for Vercel frontend
 ];
 
 app.use(
