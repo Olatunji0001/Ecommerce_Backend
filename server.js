@@ -16,13 +16,14 @@ databaseConnect();
 // Create express app
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:3000",         // for local dev
+  "https://nexus-buy.vercel.app",  // for Vercel frontend
+];
+
 app.use(
   cors({
     origin: function (origin, callback) {
-      const allowedOrigins = [
-        "http://localhost:3000",
-        "https://nexus-buy.vercel.app",
-      ];
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -32,6 +33,7 @@ app.use(
     credentials: true,
   })
 );
+
 
 app.use(express.json()); // allow backend to read JSON from frontend
 
